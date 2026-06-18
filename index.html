@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voiz — Platform Aspirasi Mahasiswa</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Hero */
+      .hero {
+        min-height: calc(100vh - 62px);
+        display: grid;
+        place-items: center;
+        padding: 4rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before,
+      .hero::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+      }
+      .hero::before {
+        width: 480px;
+        height: 480px;
+        background: radial-gradient(circle, rgba(240, 165, 0, 0.1) 0%, transparent 70%);
+        top: -60px;
+        left: -60px;
+        animation: float1 9s ease-in-out infinite;
+      }
+      .hero::after {
+        width: 380px;
+        height: 380px;
+        background: radial-gradient(circle, rgba(96, 165, 250, 0.08) 0%, transparent 70%);
+        bottom: -40px;
+        right: -40px;
+        animation: float2 11s ease-in-out infinite;
+      }
+      @keyframes float1 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(35px, 25px);
+        }
+      }
+      @keyframes float2 {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-25px, -18px);
+        }
+      }
+
+      .hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 660px;
+      }
+      .hero-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.28rem 0.9rem;
+        background: rgba(240, 165, 0, 0.12);
+        border: 1px solid rgba(240, 165, 0, 0.4);
+        border-radius: 999px;
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 1.4rem;
+      }
+      .hero h1 {
+        margin-bottom: 1.1rem;
+      }
+      .hero h1 em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .hero-desc {
+        color: var(--text-sub);
+        font-size: 1.05rem;
+        max-width: 500px;
+        margin: 0 auto 2.25rem;
+        line-height: 1.75;
+      }
+      .hero-btns {
+        display: flex;
+        gap: 0.85rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      /* Stats */
+      .stats-bar {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        padding: 2.25rem 2rem;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .stat-item {
+        text-align: center;
+      }
+      .stat-n {
+        font-family: var(--font-heading);
+        font-size: 2.1rem;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1;
+      }
+      .stat-l {
+        font-size: 0.78rem;
+        color: var(--text-sub);
+        margin-top: 0.3rem;
+      }
+
+      /* Features */
+      .features {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 4.5rem 2rem;
+      }
+      .sec-head {
+        text-align: center;
+        margin-bottom: 2.75rem;
+      }
+      .sec-head p {
+        color: var(--text-sub);
+        margin-top: 0.4rem;
+      }
+      .feat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 1.1rem;
+      }
+      .feat-card {
+        padding: 1.6rem;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition:
+          border-color 0.25s,
+          transform 0.25s;
+      }
+      .feat-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-3px);
+      }
+      .feat-ico {
+        width: 42px;
+        height: 42px;
+        background: rgba(240, 165, 0, 0.12);
+        border: 1px solid rgba(240, 165, 0, 0.35);
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        margin-bottom: 0.9rem;
+      }
+      .feat-card h3 {
+        margin-bottom: 0.35rem;
+        font-size: 1rem;
+      }
+      .feat-card p {
+        color: var(--text-sub);
+        font-size: 0.86rem;
+        line-height: 1.65;
+      }
+
+      /* CTA */
+      .cta-wrap {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 0 2rem 5rem;
+      }
+      .cta-box {
+        padding: 2.75rem 2rem;
+        background: linear-gradient(
+          135deg,
+          rgba(240, 165, 0, 0.07) 0%,
+          rgba(96, 165, 250, 0.07) 100%
+        );
+        border: 1px solid var(--border-soft);
+        border-radius: var(--radius-lg);
+        text-align: center;
+      }
+      .cta-box h2 {
+        margin-bottom: 0.7rem;
+      }
+      .cta-box p {
+        color: var(--text-sub);
+        margin-bottom: 1.6rem;
+      }
+
+      /* Footer */
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 1.4rem 2rem;
+        text-align: center;
+        color: var(--text-dim);
+        font-size: 0.8rem;
+      }
+      footer strong {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        🎤
+        <span>Voiz</span>
+      </div>
+      <ul class="navbar-links">
+        <li><a href="index.html" class="active">Beranda</a></li>
+        <li><a href="dashboard.html">Aspirasi</a></li>
+      </ul>
+      <div class="navbar-right" id="navRight"></div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-inner fade-up">
+        <div class="hero-pill">✦ Platform Aspirasi Digital</div>
+        <h1>
+          Suaramu
+          <em>Penting</em>
+          ,
+          <br />
+          Kami Pastikan Didengar
+        </h1>
+        <p class="hero-desc">
+          Voiz adalah ruang digital bagi mahasiswa untuk menyampaikan aspirasi dan pengaduan secara
+          terstruktur — anonim maupun terbuka — agar ditindaklanjuti secara transparan.
+        </p>
+        <div class="hero-btns">
+          <a href="kirim-aspirasi.html" class="btn btn-primary btn-lg">✍️ Kirim Aspirasi</a>
+          <a href="dashboard.html" class="btn btn-outline btn-lg">📋 Lihat Aspirasi</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-n" id="sTotal">—</div>
+        <div class="stat-l">Total Aspirasi</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n" id="sSelesai">—</div>
+        <div class="stat-l">Ditangani</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n" id="sMhs">—</div>
+        <div class="stat-l">Mahasiswa</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-n">5</div>
+        <div class="stat-l">Kategori</div>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <section class="features">
+      <div class="sec-head">
+        <h2>Kenapa Voiz?</h2>
+        <p>Satu platform untuk semua kebutuhan aspirasi mahasiswa</p>
+      </div>
+      <div class="feat-grid">
+        <div class="feat-card">
+          <div class="feat-ico">🎭</div>
+          <h3>Mode Anonim</h3>
+          <p>Sampaikan pendapat tanpa khawatir identitasmu terungkap.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">🗳️</div>
+          <h3>Sistem Voting</h3>
+          <p>Dukung aspirasi penting. Suara terbanyak diprioritaskan.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">📡</div>
+          <h3>Status Real-time</h3>
+          <p>Pantau perkembangan aspirasi dari diterima hingga selesai.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">📊</div>
+          <h3>Dashboard Admin</h3>
+          <p>Pimpinan dan BEM pantau semua aspirasi lewat dasbor komprehensif.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">🗂️</div>
+          <h3>Kategori Terstruktur</h3>
+          <p>Akademik, fasilitas, sosial — tersortir agar mudah ditindaklanjuti.</p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-ico">🔔</div>
+          <h3>Notifikasi</h3>
+          <p>Terima pemberitahuan saat status aspirasimu diperbarui admin.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-wrap">
+      <div class="cta-box">
+        <h2>Siap Menyuarakan Aspirasimu?</h2>
+        <p>Bergabunglah bersama mahasiswa yang sudah menggunakan Voiz</p>
+        <div style="display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap">
+          <a href="register.html" class="btn btn-primary btn-lg">Daftar Sekarang — Gratis</a>
+          <a href="login.html" class="btn btn-outline btn-lg">Sudah punya akun?</a>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © 2025
+        <strong>Voiz</strong>
+        — Platform Aspirasi Mahasiswa. Dibuat untuk kemajuan kampus.
+      </p>
+    </footer>
+
+    <div id="toast-wrap"></div>
+    <script src="js/api.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        initNavbar();
+
+        // Load stats
+        (async () => {
+          const res = await api.get('/admin/stats');
+          if (!res?.success) return;
+          const sm = res.data.statusStats.reduce((acc, r) => {
+            acc[r.status] = r.total;
+            return acc;
+          }, {});
+          document.getElementById('sTotal').textContent = res.data.total ?? '—';
+          document.getElementById('sSelesai').textContent = sm.selesai ?? 0;
+          document.getElementById('sMhs').textContent = res.data.totalUser ?? '—';
+        })();
+      });
+    </script>
+  </body>
+</html>

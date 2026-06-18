@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard — Voiz</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="index.html" class="navbar-brand">
+        🎤
+        <span>Voiz</span>
+      </a>
+      <ul class="navbar-links">
+        <li><a href="dashboard.html" class="active">Aspirasi</a></li>
+        <li><a href="kirim-aspirasi.html">Kirim</a></li>
+        <li><a href="#" id="linkSaya">Aspirasi Saya</a></li>
+      </ul>
+      <div class="navbar-right">
+        <div class="notif-wrap">
+          <button class="btn btn-outline btn-sm" id="notifBtn">
+            🔔
+            <span class="notif-dot" id="notifDot" style="display: none">0</span>
+          </button>
+        </div>
+        <span id="userGreet" style="font-size: 0.84rem; color: var(--text-sub)"></span>
+        <div id="navRight"></div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <main class="dash-main">
+      <!-- Filter Bar -->
+      <div class="filter-bar">
+        <h2>Aspirasi Mahasiswa</h2>
+        <div class="filter-controls">
+          <input
+            type="search"
+            id="searchInput"
+            class="form-control"
+            placeholder="🔍 Cari aspirasi…"
+            style="width: 210px"
+          />
+          <select id="filterKat" class="form-control" style="width: 150px">
+            <option value="">Semua Kategori</option>
+          </select>
+          <select id="filterStatus" class="form-control" style="width: 145px">
+            <option value="">Semua Status</option>
+            <option value="menunggu">Menunggu</option>
+            <option value="diterima">Diterima</option>
+            <option value="diproses">Diproses</option>
+            <option value="selesai">Selesai</option>
+            <option value="ditolak">Ditolak</option>
+          </select>
+          <a href="kirim-aspirasi.html" class="btn btn-primary btn-sm">+ Kirim</a>
+        </div>
+      </div>
+
+      <!-- List -->
+      <div id="aspirasiList" class="aspirasi-list"></div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="pagination"></div>
+    </main>
+
+    <!-- Modal Detail -->
+    <div
+      id="modalBg"
+      class="modal-bg"
+      style="display: none"
+      onclick="if (event.target === this) closeModal();"
+    >
+      <div class="modal-box">
+        <button class="modal-close" onclick="closeModal()">✕</button>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- Side Panel Aspirasi Saya -->
+    <div
+      id="sidePanel"
+      class="side-panel"
+      style="display: none"
+      onclick="if (event.target === this) closeSidePanel();"
+    >
+      <div class="side-inner">
+        <div class="side-head">
+          <h3>Aspirasi Saya</h3>
+          <button onclick="closeSidePanel()">✕</button>
+        </div>
+        <div id="myList"></div>
+      </div>
+    </div>
+
+    <div id="toast-wrap"></div>
+    <script src="js/api.js"></script>
+    <script src="js/voting.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

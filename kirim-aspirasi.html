@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kirim Aspirasi — Voiz</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <a href="index.html" class="navbar-brand">
+        🎤
+        <span>Voiz</span>
+      </a>
+      <ul class="navbar-links">
+        <li><a href="dashboard.html">Aspirasi</a></li>
+        <li><a href="kirim-aspirasi.html" class="active">Kirim</a></li>
+      </ul>
+      <div class="navbar-right" id="navRight"></div>
+    </nav>
+
+    <!-- Main -->
+    <div class="kirim-wrap">
+      <div class="kirim-header">
+        <a href="dashboard.html" style="color: var(--text-sub); font-size: 0.84rem">← Kembali</a>
+        <h1>✍️ Kirim Aspirasi</h1>
+        <p>Sampaikan aspirasi atau pengaduanmu kepada pihak kampus secara terstruktur.</p>
+      </div>
+
+      <!-- Konten utama diisi oleh kirim.js -->
+      <div id="mainContent">
+        <div class="flex-center" style="padding: 3rem">
+          <div class="spinner" style="width: 26px; height: 26px; border-width: 3px"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-wrap"></div>
+    <script src="js/api.js"></script>
+    <script src="js/kirim.js"></script>
+  </body>
+</html>
